@@ -1,4 +1,9 @@
-const add = ({a, b, c}) => a + b + c;
+const R = require('ramda');
+
+const add = ({...args}) => R.pipe(
+  R.values,
+  R.reduce(R.add, 0)
+)(args);
 
 const addHandler = async  msg => ({
   status: 200,
